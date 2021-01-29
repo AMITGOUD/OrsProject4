@@ -21,7 +21,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.log4j.Logger;
 
 /**
- * College functionality Controller. Performs operation for add, update, delete
+ * Ccollege functionality Controller. Performs operation for add, update, delete
  * and get College
  *
  * @author SunilOS
