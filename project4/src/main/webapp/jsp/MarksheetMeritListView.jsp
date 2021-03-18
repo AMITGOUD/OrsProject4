@@ -3,16 +3,19 @@
 <%@page import="in.co.sunrays.bean.MarksheetBean"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.Iterator"%>
+<%@page errorPage="ErrorView.jsp"%>
 <html>
 <body>
     <%@include file="Header.jsp"%>
     <center>
         <h1>Marksheet Merit List</h1>
 
+                    <font color="red"><%=ServletUtility.getErrorMessage(request)%></font>
+                
         <form action="<%=ORSView.MARKSHEET_MERIT_LIST_CTL%>" method="POST">
             <br>
             <table border="1" width="100%">
-                <tr>
+                <tr style="background-color:gray;color: menu;">
 
                     <th>S.No</th>
                     <th>Roll No</th>
@@ -20,11 +23,10 @@
                     <th>Physics</th>
                     <th>Chemistry</th>
                     <th>Maths</th>
+<!--                     <th>Percentage</th> -->
 
                 </tr>
-                <tr>
-                    <td colspan="8"><font color="red"><%=ServletUtility.getErrorMessage(request)%></font></td>
-                </tr>
+                
                 <%
                     int pageNo = ServletUtility.getPageNo(request);
                     int pageSize = ServletUtility.getPageSize(request);
@@ -36,6 +38,11 @@
                     while (it.hasNext()) {
 
                         MarksheetBean bean = it.next();
+//                        /*  int a=bean.getPhysics();
+//                         int b= bean.getChemistry();
+//                        int c=  bean.getMaths();
+//                          float d=(float)(((a+b+c)/300)*100); */
+                        
                 %>
                 <tr>
 
@@ -45,6 +52,7 @@
                     <td><%=bean.getPhysics()%></td>
                     <td><%=bean.getChemistry()%></td>
                     <td><%=bean.getMaths()%></td>
+<%--                     <td><%=d%>%</td> --%>
 
                 </tr>
 

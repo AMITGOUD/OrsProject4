@@ -1,13 +1,5 @@
 package in.co.sunrays.util;
 
-import in.co.sunrays.bean.BaseBean;
-import in.co.sunrays.controller.BaseCtl;
-import in.co.sunrays.controller.ORSView;
-import in.co.sunrays.model.AppRole;
-import in.co.sunrays.model.BaseModel;
-//import in.co.sunrays.model.UserModel;
-import in.co.sunrays.model.UserModel;
-
 import java.io.IOException;
 import java.util.Enumeration;
 import java.util.List;
@@ -16,6 +8,14 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import in.co.sunrays.bean.BaseBean;
+import in.co.sunrays.controller.BaseCtl;
+import in.co.sunrays.controller.ORSView;
+import in.co.sunrays.model.AppRole;
+import in.co.sunrays.model.BaseModel;
+//import in.co.sunrays.model.UserModel;
+import in.co.sunrays.model.UserModel;
 
 /**
  * This class provides utility operation for Servlet container like forward,
@@ -88,7 +88,7 @@ public class ServletUtility {
     public static void handleException(Exception e, HttpServletRequest request,
             HttpServletResponse response) throws IOException, ServletException {
         request.setAttribute("exception", e);
-       // response.sendRedirect();
+       response.sendRedirect(ORSView.ERROR_CTL);
 
     }
 

@@ -4,11 +4,27 @@
     <%@ page import="in.co.sunrays.controller.*"%>
 <%@ page import="in.co.sunrays.util.*"%>
 <%@ page import="java.util.List"%>
+<%@page errorPage="ErrorView.jsp"%>
 <jsp:useBean id="bean" class="in.co.sunrays.bean.TimeTableBean"
 	scope="request"></jsp:useBean>
 <!DOCTYPE html>
 <html>
 <head>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+<meta charset="ISO-8859-1">
+<script>
+$(function() {
+	$("#dob1").datepicker({
+		changeMonth : true,
+		changeYear : true,
+		yearRange:'1980:2021',
+		dateFormat: 'mm/dd/yy'
+	});
+});
+</script>
 <style type="text/css">
 table.fixed {table-layout:fixed; width:520px; align-self: center; margin-left: 26.5em}/*Setting the table width is important!*/
 
@@ -85,7 +101,7 @@ table.fixed td:nth-of-type(3) {width:210px;}/*Setting the width of column 3*/
              
                <tr>
 				<td>ExamDate<font color="red">*</font></td>
-				<td><input type="text" name="examdate"
+				<td><input type="text" name="examdate" id="dob1"
 					value="<%=DataUtility.getStringData(bean.getExamDate())%>"
 					<%=(bean.getId() > 0) ? "readonly" : ""%>></td><td><font color="red"><%=ServletUtility.getErrorMessage("examdate", request)%></font></td>
 			</tr>

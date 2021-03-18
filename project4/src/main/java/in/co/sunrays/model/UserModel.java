@@ -392,9 +392,7 @@ public class UserModel {
             if (bean.getPassword() != null && bean.getPassword().length() > 0) {
                 sql.append(" AND PASSWORD like '" + bean.getPassword() + "%'");
             }
-            if (bean.getDob() != null && bean.getDob().getDate() > 0) {
-                sql.append(" AND DOB = " + bean.getGender());
-            }
+            
             if (bean.getMobileNo() != null && bean.getMobileNo().length() > 0) {
                 sql.append(" AND MOBILE_NO = " + bean.getMobileNo());
             }
@@ -599,6 +597,7 @@ public class UserModel {
 
             }
         } catch (Exception e) {
+        	e.printStackTrace();
             log.error("Database Exception..", e);
             throw new ApplicationException("Exception : Exception in get roles");
 

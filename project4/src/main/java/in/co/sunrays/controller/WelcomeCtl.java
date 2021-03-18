@@ -19,7 +19,7 @@ import org.apache.log4j.Logger;
  * @version 1.0
  * @Copyright (c) SunilOS
  */
-@ WebServlet(name="WelcomeCtl",urlPatterns={"/WelcomeCtl"})
+/* @ WebServlet(name="WelcomeCtl",urlPatterns={"/WelcomeCtl"}) */
 public class WelcomeCtl extends BaseCtl {
 
     private static final long serialVersionUID = 1L;

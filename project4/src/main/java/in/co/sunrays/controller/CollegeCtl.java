@@ -21,14 +21,14 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.log4j.Logger;
 
 /**
- * Ccollege functionality Controller. Performs operation for add, update, delete
+ * College functionality Controller. Performs operation for add, update, delete
  * and get College
  *
  * @author SunilOS
  * @version 1.0
  * @Copyright (c) SunilOS
  */
-@ WebServlet(name="CollegeCtl",urlPatterns={"/ctl/CollegeCtl"})
+/* @ WebServlet(name="CollegeCtl",urlPatterns={"/ctl/CollegeCtl"}) */
 public class CollegeCtl extends BaseCtl {
 
     private static final long serialVersionUID = 1L;

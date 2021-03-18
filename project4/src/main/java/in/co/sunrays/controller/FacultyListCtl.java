@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.log4j.Logger;
 
 import in.co.sunrays.bean.BaseBean;
+import in.co.sunrays.bean.CourceBean;
 import in.co.sunrays.bean.FacultyBean;
 import in.co.sunrays.bean.StudentBean;
 import in.co.sunrays.exception.ApplicationException;
@@ -92,12 +93,14 @@ public class FacultyListCtl extends BaseCtl {
 
 	        FacultyBean bean = (FacultyBean) populateBean(request);
 	        String op = DataUtility.getString(request.getParameter("operation"));
+	        // get the selected checkbox ids array for delete list
+	        String[] ids = request.getParameterValues("ids");
 	        FacultyModel model = new FacultyModel();
 
 	        try {
 
-	            if (OP_SEARCH.equalsIgnoreCase(op) || "Next".equalsIgnoreCase(op)
-	                    || "Previous".equalsIgnoreCase(op)) {
+	            if (OP_SEARCH.equalsIgnoreCase(op) || OP_NEXT.equalsIgnoreCase(op)
+	                    || OP_PREVIOUS.equalsIgnoreCase(op)) {
 
 	                if (OP_SEARCH.equalsIgnoreCase(op)) {
 	                    pageNo = 1;
@@ -106,8 +109,24 @@ public class FacultyListCtl extends BaseCtl {
 	                } else if (OP_PREVIOUS.equalsIgnoreCase(op) && pageNo > 1) {
 	                    pageNo--;
 	                }
-
+	                
 	            }
+	            else if (OP_NEW.equalsIgnoreCase(op)) {
+	                 ServletUtility.redirect(ORSView.FACULTY_CTL, request,
+	                        response);
+	                return;
+	            } else if (OP_DELETE.equalsIgnoreCase(op)) {
+	                pageNo = 1;
+	                if (ids != null && ids.length > 0) {
+	                    FacultyBean deletebean = new FacultyBean();
+	                    for (String id : ids) {
+	                        deletebean.setId(DataUtility.getInt(id));
+	                        model.delete(deletebean);
+	                    }
+	                } else {
+	                    ServletUtility.setErrorMessage(
+	                            "Select at least one record", request);
+	                }}
 	            list = model.search(bean, pageNo, pageSize);
 	            ServletUtility.setList(list, request);
 	            if (list == null || list.size() == 0) {
@@ -119,12 +138,12 @@ public class FacultyListCtl extends BaseCtl {
 	            ServletUtility.setPageSize(pageSize, request);
 	            ServletUtility.forward(getView(), request, response);
 
-	        } catch (ApplicationException e) {
+	            }catch (ApplicationException e) {
 	            log.error(e);
 	            ServletUtility.handleException(e, request, response);
 	            return;
 	        }
-	        log.debug("FacultyListCtl doGet End");
+	        log.debug("FacultyListCtl dopost End");
 	    }
 
 	    @Override

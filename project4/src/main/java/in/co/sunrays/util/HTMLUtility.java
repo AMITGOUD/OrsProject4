@@ -39,7 +39,7 @@ public class HTMLUtility {
 
         Set<String> keys = map.keySet();
         String val = null;
-
+        sb.append("<option style='width:500px; height:30px;' selected value=''>-----------select------------</option>");
         for (String key : keys) {
             val = map.get(key);
             if (key.trim().equals(selectedVal)) {
@@ -72,7 +72,11 @@ public class HTMLUtility {
 
         String key = null;
         String val = null;
-
+        boolean select=true;
+        if(select) {
+        	
+sb.append("<option style='width:800px; height:30px;' selected value=''>------------select-----------</option>");
+        }
         for (DropDownListBean obj : dd) {
             key = obj.getKey();
             val = obj.getValue();

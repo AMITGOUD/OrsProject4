@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.log4j.Logger;
 
 import in.co.sunrays.bean.BaseBean;
+import in.co.sunrays.bean.CourceBean;
 import in.co.sunrays.bean.StudentBean;
 import in.co.sunrays.bean.TimeTableBean;
 import in.co.sunrays.exception.ApplicationException;
@@ -34,7 +35,7 @@ public class TimeTableListCtl extends BaseCtl {
         bean.setSubjectName(DataUtility.getString(request
                 .getParameter("subjectname")));
         bean.setCourceName(DataUtility.getString(request.getParameter("courcename")));
-        
+        bean.setExamDate(DataUtility.getString(request.getParameter("exameDate")));
         return bean;
     }
 
@@ -91,6 +92,8 @@ public class TimeTableListCtl extends BaseCtl {
 
         TimeTableBean bean = (TimeTableBean) populateBean(request);
         String op = DataUtility.getString(request.getParameter("operation"));
+        // get the selected checkbox ids array for delete list
+        String[] ids = request.getParameterValues("ids");
         TimeTableModel model = new TimeTableModel();
 
         try {
@@ -106,7 +109,22 @@ public class TimeTableListCtl extends BaseCtl {
                     pageNo--;
                 }
 
-            }
+            }else if (OP_NEW.equalsIgnoreCase(op)) {
+                ServletUtility.redirect(ORSView.TIMETABLE_CTL, request,
+                        response);
+                return;
+            } else if (OP_DELETE.equalsIgnoreCase(op)) {
+                pageNo = 1;
+                if (ids != null && ids.length > 0) {
+                    TimeTableBean deletebean = new TimeTableBean();
+                    for (String id : ids) {
+                        deletebean.setId(DataUtility.getInt(id));
+                        model.delete(deletebean);
+                    }
+                } else {
+                    ServletUtility.setErrorMessage(
+                            "Select at least one record", request);
+                }}
             list = model.search(bean, pageNo, pageSize);
             ServletUtility.setList(list, request);
             if (list == null || list.size() == 0) {

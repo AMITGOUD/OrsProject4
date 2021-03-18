@@ -3,6 +3,7 @@
 <%@page import="in.co.sunrays.util.HTMLUtility"%>
 <%@page import="in.co.sunrays.util.DataUtility"%>
 <%@page import="in.co.sunrays.util.ServletUtility"%>
+<%@page errorPage="ErrorView.jsp"%>
 <html>
 <head>
  <style type="text/css">
@@ -66,19 +67,19 @@ table.fixed td:nth-of-type(3) {width:3500px;}/*Setting the width of column 3*/
                     String.valueOf(bean.getStudentId()), l)%><%} %></td><td></td>
                 </tr>
                 <tr>
-                    <td>Physics</td>
+                    <td>Physics<font color="red">*</font></td>
                     <td><input type="text" name="physics"
                         value="<%=DataUtility.getStringData(bean.getPhysics())%>"></td><td><font
                         color="red"> <%=ServletUtility.getErrorMessage("physics", request)%></font></td>
                 </tr>
                 <tr>
-                    <td>Chemistry</td>
+                    <td>Chemistry<font color="red">*</font></td>
                     <td><input type="text" name="chemistry"
                         value="<%=DataUtility.getStringData(bean.getChemistry())%>"></td><td><font
                         color="red"> <%=ServletUtility.getErrorMessage("chemistry", request)%></font></td>
                 </tr>
                 <tr>
-                    <td>Maths</td>
+                    <td>Maths<font color="red">*</font></td>
                     <td><input type="text" name="maths"
                         value="<%=DataUtility.getStringData(bean.getMaths())%>"></td><td><font
                         color="red"> <%=ServletUtility.getErrorMessage("maths", request)%></font></td>

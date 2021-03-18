@@ -1,6 +1,7 @@
 <%@page import="in.co.sunrays.controller.ForgetPasswordCtl"%>
 <%@page import="in.co.sunrays.util.DataUtility"%>
 <%@page import="in.co.sunrays.util.ServletUtility"%>
+<%@page errorPage="ErrorView.jsp"%>
 <html>
 <body> <%@ include file="Header.jsp"%>
     <form action="<%=ORSView.FORGET_PASSWORD_CTL%>" method="post">

@@ -5,6 +5,7 @@
 <%@page import="in.co.sunrays.model.MarksheetModel"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.Iterator"%>
+<%@page errorPage="ErrorView.jsp"%>
 <html>
 <head>
 <script src="<%=ORSView.APP_CONTEXT%>/js/select.js"></script>
@@ -15,8 +16,8 @@ MarksheetModel model=new MarksheetModel();
 
 %>
     <%@include file="Header.jsp"%>
-    <center>
-        <h1>Marksheet List</h1>
+    
+        <h1 align="center">Marksheet List</h1>
 <h2 style="color:green"><%=ServletUtility.getSuccessMessage(request)%></h2>
         <form action="<%=ORSView.MARKSHEET_LIST_CTL%>" method="POST" name="list01">
 
@@ -27,17 +28,15 @@ MarksheetModel model=new MarksheetModel();
                         value="<%=ServletUtility.getParameter("name", request)%>">
                         &emsp; <label>RollNo :</label> <input type="text" name="rollNo"
                         value="<%=ServletUtility.getParameter("rollNo", request)%>">&emsp;
-                        <input type="submit" name="operation" value="<%=MarksheetListCtl.OP_SEARCH %>"></td>
+                        <input type="submit" name="operation" value="<%=MarksheetListCtl.OP_SEARCH %>">&nbsp&nbsp<input type="reset" value="reset"></td>
                 </tr>
             </table>
              
-                    <font color="red"><%=ServletUtility.getErrorMessage(request)%></font>
-               
-            <br>
+                    <input type=button value="Back" onCLick="history.back()"><h4 align="center"><font color="red"><%=ServletUtility.getErrorMessage(request)%></font></h4>
             <table border="1" width="100%" name="table">
-                <tr><th>S.no.</th>
+                <tr style="background-color:gray;color: menu;">
                     <th><input type="checkbox" name="Check_ctr" value="yes" onClick="checkAll(document.list01.ids, this)"><b>select All</b><dd></th>
-                    
+                    <th>S.no.</th>
                     <th>RollNo</th>
                     <th>Name</th>
                     <th>Physics</th>
@@ -58,9 +57,9 @@ MarksheetModel model=new MarksheetModel();
 
                          bean = it.next();
                 %>
-                <tr><td><%=index++%></td>
+                <tr style="text-align: center;">
                     <td><input type="checkbox" name="ids" value="<%=bean.getId()%>"></td>
-                   
+                   <td><%=index++%></td>
                     <td><%=bean.getRollNo()%></td>
                     <td><%=bean.getName()%></td>
                     <td><%=bean.getPhysics()%></td>
@@ -90,7 +89,12 @@ MarksheetModel model=new MarksheetModel();
 							}
 						%>
 					</td>
-					<td><input type="submit" name="operation" value="<%=MarksheetListCtl.OP_DELETE%>"></td>
+					<td align="center"><input type="submit" name="operation" value="<%=MarksheetListCtl.OP_DELETE%>">
+					&emsp;&emsp;&emsp;&emsp;&emsp;
+&emsp;&emsp;&emsp;&emsp;&emsp;
+<input type="submit" name="operation"value="<%=MarksheetListCtl.OP_NEW%>">
+					
+					</td>
 					<%
 						if (list.size() < pageSize || model.nextPK() - 1 == bean.getId()) {
 					%>
@@ -108,7 +112,7 @@ MarksheetModel model=new MarksheetModel();
             <input type="hidden" name="pageNo" value="<%=pageNo%>"> <input
                 type="hidden" name="pageSize" value="<%=pageSize%>">
         </form>
-    </center>
+    
     <%@include file="Footer.jsp"%>
 </body>
 </html>

@@ -26,7 +26,7 @@ import org.apache.log4j.Logger;
  * @version 1.0
  * @Copyright (c) SunilOS
  */
-@ WebServlet(name="GetMarksheetCtl",urlPatterns={"/ctl/GetMarksheetCtl"})
+/* @ WebServlet(name="GetMarksheetCtl",urlPatterns={"/ctl/GetMarksheetCtl"}) */
 public class GetMarksheetCtl extends BaseCtl {
 
     private static Logger log = Logger.getLogger(GetMarksheetCtl.class);

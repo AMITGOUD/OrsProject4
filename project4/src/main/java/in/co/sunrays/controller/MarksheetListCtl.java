@@ -30,7 +30,9 @@ import org.apache.log4j.Logger;
 /**
  * Servlet implementation class MarksheetlistCtl
  */
-@ WebServlet(name="MarksheetListCtl",urlPatterns={"/ctl/MarksheetListCtl"})
+/*
+ * @ WebServlet(name="MarksheetListCtl",urlPatterns={"/ctl/MarksheetListCtl"})
+ */
 public class MarksheetListCtl extends BaseCtl {
 
     private static Logger log = Logger.getLogger(MarksheetListCtl.class);

@@ -4,6 +4,7 @@
 <%@page import="in.co.sunrays.model.FacultyModel"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.Iterator"%>
+<%@page errorPage="ErroView.jsp"%>
 <html>
 <head>
 <script src="<%=ORSView.APP_CONTEXT%>/js/select.js"></script>
@@ -16,8 +17,8 @@ FacultyModel model=new FacultyModel();
 					
 				
 	<%@include file="Header.jsp"%>
-	<center>
-		<h1>Faculty List</h1>
+	
+		<h1 align="center">Faculty List</h1>
 
 		<form action="<%=ORSView.FACULTY_LIST_CTL%>" method="post" name="list01">
 			<table width="100%">
@@ -31,23 +32,24 @@ FacultyModel model=new FacultyModel();
 						
 						
 						<input type="submit" name="operation"
-						value="<%=FacultyListCtl.OP_SEARCH%>"></td>
+						value="<%=FacultyListCtl.OP_SEARCH%>">
+&nbsp&nbsp<input type="reset" value="reset"></td>
 				</tr>
-			</table><font color="red"><%=ServletUtility.getErrorMessage(request)%></font>
-			<br>
+			</table><input type=button value="Back" onCLick="history.back()"><h4 align="center"><font color="red"><%=ServletUtility.getErrorMessage(request)%></font></h4>
+			
 			<table border="1" width="100%" name="table">
 			
-				<tr>
-				<th>S.No.</th>
-				<th><input type="checkbox" name="Check_ctr" value="yes" onClick="checkAll(document.list01.ids, this)"><b>select All</b><dd></th>
+				<tr style="background-color:gray;color: menu;">
+				
+				<th><input type="checkbox" name="Check_ctr" value="yes" onClick="checkAll(document.list01.ids, this)"><b>Select All</b><dd></th>
 				   
-					
+		<th>S.No.</th>			
 					
 					<th>First Name.</th>
 					<th>Last Name.</th>
 					<th>Date Of joining.</th>
-					<th>Mobil No.</th>
-					<th>Email ID.</th>
+					<th>Mobile No.</th>
+					<th>CollegeName</th>
 					<th>Edit</th>
 				</tr>
 				
@@ -64,14 +66,15 @@ FacultyModel model=new FacultyModel();
 						 bean = it.next();
 				%>
 				<tr>
-					<td><%=index++%></td>
+					
 					
 					<td><input type="checkbox" name="ids" value="<%=bean.getId()%>"></td>
+					<td><%=index++%></td>
 					<td><%=bean.getFirstName()%></td>
 					<td><%=bean.getLastName()%></td>
 					<td><%=bean.getJoiningDate()%></td>
 					<td><%=bean.getMobileNo()%></td>
-					<td><%=bean.getLoginId()%></td>
+					<td><%=bean.getCollegeName()%></td>
 					<td><a href="FacultyCtl?id=<%=bean.getId()%>">Edit</a></td>
 				</tr>
 				<%
@@ -95,7 +98,10 @@ FacultyModel model=new FacultyModel();
 							}
 						%>
 					</td>
-					<td><input type="submit" name="operation" value="<%=FacultyListCtl.OP_DELETE%>"></td>
+					<td align="center"><input type="submit" name="operation" value="<%=FacultyListCtl.OP_DELETE%>">
+					&emsp;&emsp;&emsp;&emsp;&emsp;
+&emsp;&emsp;&emsp;&emsp;&emsp;
+<input type="submit" name="operation"value="<%=FacultyListCtl.OP_NEW%>"></td>
 					<%
 						if (list.size() < pageSize || model.nextPK() - 1 == bean.getId()) {
 					%>
@@ -115,6 +121,6 @@ FacultyModel model=new FacultyModel();
 
 
 		</form>
-	</center>
+	
 </body>
 </html>

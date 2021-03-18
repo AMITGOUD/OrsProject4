@@ -25,7 +25,7 @@ import in.co.sunrays.util.ServletUtility;
  * Servlet implementation class SubjectListCtl
  * 
  */
-@ WebServlet(name="SubjectListCtl",urlPatterns={"/ctl/SubjectListCtl"})
+/* @ WebServlet(name="SubjectListCtl",urlPatterns={"/ctl/SubjectListCtl"}) */
 public class SubjectListCtl extends BaseCtl {
 	 private static Logger log = Logger.getLogger(SubjectListCtl.class);
 

@@ -4,6 +4,7 @@
 <%@page import="in.co.sunrays.bean.CollegeBean"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.Iterator"%>
+<%@page errorPage="ErrorView.jsp"%>
 
 <html>
 <head>
@@ -15,8 +16,9 @@
 		CollegeModel model = new CollegeModel();
 		CollegeBean bean = new CollegeBean();
 	%>
-	<center>
-		<h1>College List</h1>
+	<form action=""></form>
+	
+		<h1 align="center">College List</h1>
 
 		<form action="<%=ORSView.COLLEGE_LIST_CTL%>" method="POST" name="list01">
 
@@ -28,18 +30,22 @@
 						<label>City :</label> <input type="text" name="city"
 						value="<%=ServletUtility.getParameter("city", request)%>">
 						<input type="submit" name="operation"
-						value="<%=CollegeListCtl.OP_SEARCH%>"></td>
+						value="<%=CollegeListCtl.OP_SEARCH%>">
+						<input type="reset" value="reset">
+						</td>
 				</tr>
 			</table>
-			<br>
+			<input type=button value="Back" onCLick="history.back()">
 			
-					<font color="red"><%=ServletUtility.getErrorMessage(request)%></font>
+			
+				<h4 align="center">	<font color="red" ><%=ServletUtility.getErrorMessage(request)%></font></h4>
 				
 			<table border="1" width="100%" name="table">
-				<tr>
+				<tr style="background-color:gray;color: menu;">
 					
-					<th>S.No.</th>
+					
 					<th><input type="checkbox" name="Check_ctr" value="yes" onClick="checkAll(document.list01.ids, this)"><b>select All</b><dd></th>
+					<th>S.No.</th>
 					<th>Name.</th>
 					<th>Address.</th>
 					<th>State.</th>
@@ -60,9 +66,11 @@
 
 						bean = it.next();
 				%>
-				<tr><td><%=index++%></td>
-					<td><input type="checkbox" name="ids"
+				<tr style="text-align: center;">
+				<td><input type="checkbox" name="ids"
 						value="<%=bean.getId()%>"></td>
+				<td><%=index++%></td>
+					
 					
 
 					<td><%=bean.getName()%></td>
@@ -93,7 +101,10 @@
 							}
 						%>
 					</td>
-					<td><input type="submit" name="operation" value="<%=CollegeListCtl.OP_DELETE%>"></td>
+					<td align="center"><input type="submit" name="operation" value="<%=CollegeListCtl.OP_DELETE%>">
+					&emsp;&emsp;&emsp;&emsp;&emsp;
+&emsp;&emsp;&emsp;&emsp;&emsp;
+<input type="submit" name="operation"value="<%=CollegeListCtl.OP_NEW%>"></td>
 					<%
 						if (list.size() < pageSize || model.nextPK() - 1 == bean.getId()) {
 					%>
@@ -111,7 +122,7 @@
 			<input type="hidden" name="pageNo" value="<%=pageNo%>"> <input
 				type="hidden" name="pageSize" value="<%=pageSize%>">
 		</form>
-	</center>
+	
 	<%@include file="Footer.jsp"%>
 </body>
 </html>

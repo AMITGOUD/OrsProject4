@@ -27,7 +27,7 @@ import javax.servlet.http.HttpSession;
  * @version 1.0
  * @Copyright (c) SunilOS
  */
-@ WebFilter(filterName="FrontCtl",urlPatterns={"/ctl/*"})
+ @ WebFilter(filterName="FrontCtl",urlPatterns={"/ctl/*"}) 
 public class FrontController implements Filter {
 
     

@@ -5,8 +5,23 @@
 <%@page import="in.co.sunrays.bean.TimeTableBean"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.Iterator"%>
+<%@page errorPage="ErrorView.jsp"%>
 <html>
 <head>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+<script>
+	$(function() {
+		$("#dob1").datepicker({
+			changeMonth : true,
+			changeYear : true,
+			yearRange:'1980:2021',
+			dateFormat: 'mm/dd/yy'
+		});
+	});
+</script>
 <script src="<%=ORSView.APP_CONTEXT%>/js/select.js"></script>
 </head>
 <body>
@@ -14,8 +29,8 @@
     <%TimeTableBean bean=new TimeTableBean(); 
     TimeTableModel model=new TimeTableModel();
     %>
-    <center>
-        <h1>TimeTable List</h1>
+    
+        <h1 align="center">TimeTable List</h1>
 
         <form action="<%=ORSView.TIMETABLE_LIST_CTL%>" method="post" name="list01">
             <table width="100%">
@@ -23,26 +38,30 @@
                     <td align="center"><label> Subjectname :</label> <input
                         type="text" name="subjectname"
                         value="<%=ServletUtility.getParameter("subjectname", request)%>">
-                        <label>courcename :</label> <input type="text" name="courcename"
+                        <label>Courcename :</label> <input type="text" name="courcename"
                         value="<%=ServletUtility.getParameter("courcename", request)%>">
-                        <input type="submit" name="operation" value="<%=TimeTableListCtl.OP_SEARCH %>"></td>
+                        <label>ExamDate :</label> <input type="text" name="exameDate" id="dob1" readonly="readonly"
+                        value="<%=ServletUtility.getParameter("exameDate", request)%>">
+                        <input type="submit" name="operation"  value="<%=TimeTableListCtl.OP_SEARCH %>">
+&nbsp&nbsp<input type="reset" value="reset"></td>
                 </tr>
             </table>
             
-                    <font color="red"><%=ServletUtility.getErrorMessage(request)%></font>
+                 <input type=button value="Back" onCLick="history.back()">   <h4 align="center"><font color="red"><%=ServletUtility.getErrorMessage(request)%></font></h4>
                
-            <br>
+            
             <table border="1" width="100%" name="table">
-                <tr>
+                <tr style="background-color:gray;color: menu;">
                      
-                    <th>S.No.</th>
-                    <th><input type="checkbox" name="Check_ctr" value="yes" onClick="checkAll(document.list01.ids, this)"><b>select All</b><dd></th>
+                    
+                    <th><input type="checkbox" name="Check_ctr" value="yes" onClick="checkAll(document.list01.ids, this)"><b>Select All</b><dd></th>
+                   <th>S.No.</th>
                     <th>courceName</th>
                     <th>Subject Name.</th>
                     <th>Exam date.</th>
                     <th>Exam Time.</th>
                     
-                    
+                    <th>Edit</th>
                 </tr>
                 
                 <%
@@ -58,10 +77,11 @@
 
                     	 bean = it.next();
                 %>
-                <tr>
+                <tr style="text-align: center;">
                
-                    <td><%=index++%></td>
+                    
                      <td><input type="checkbox" name="ids" value="<%=bean.getId()%>"></td>
+                    <td><%=index++%></td>
                     <td><%=bean.getCourceName()%></td>
                     <td><%=bean.getSubjectName()%></td>
                     <td><%=bean.getExamDate()%></td>
@@ -90,7 +110,12 @@
 							}
 						%>
 					</td>
-					<td><input type="submit" name="operation" value="<%=TimeTableListCtl.OP_DELETE%>"></td>
+					<td align="center"><input type="submit" name="operation" value="<%=TimeTableListCtl.OP_DELETE%>">
+					&emsp;&emsp;&emsp;&emsp;&emsp;
+&emsp;&emsp;&emsp;&emsp;&emsp;
+<input type="submit" name="operation"value="<%=TimeTableListCtl.OP_NEW%>">
+					
+					</td>
 					<%
 						if (list.size() < pageSize || model.nextPK() - 1 == bean.getId()) {
 					%>
@@ -111,6 +136,6 @@
 
         </form>
         <%@include file="Footer.jsp"%>
-    </center>
+   
 </body>
 </html>

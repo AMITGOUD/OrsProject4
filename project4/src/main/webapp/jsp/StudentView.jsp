@@ -3,6 +3,7 @@
 <%@ page import="in.co.sunrays.controller.*"%>
 <%@ page import="in.co.sunrays.util.*"%>
 <%@ page import="java.util.List"%>
+<%@page errorPage="ErrorView.jsp"%>
 <jsp:useBean id="bean" class="in.co.sunrays.bean.StudentBean"
 	scope="request"></jsp:useBean>
 <!DOCTYPE html>
@@ -19,7 +20,22 @@ table.fixed td:nth-of-type(3) {width:200px;}/*Setting the width of column 3*/
 
 </style> 
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+<meta charset="ISO-8859-1">
+<script>
+$(function() {
+	$("#dob1").datepicker({
+		changeMonth : true,
+		changeYear : true,
+		yearRange:'1980:2021',
+		dateFormat: 'mm/dd/yy'
+	});
+});
+</script>
 </head>
 <body>
 <%@include file="Header.jsp" %>
@@ -81,7 +97,7 @@ table.fixed td:nth-of-type(3) {width:200px;}/*Setting the width of column 3*/
 			</tr>
 			<tr>
 				<td>Date of birth<font color="red">*</font></td>
-				<td><input type="text" name="dob1" value="<%=DataUtility.getStringData(bean.getDob())%>"
+				<td><input type="text" name="dob1" id="dob1" value="<%=DataUtility.getStringData(bean.getDob())%>"
 					<%=(bean.getId() > 0) ? "readonly" : ""%>></td><td><font color="red"><%=ServletUtility.getErrorMessage("dob1", request)%></font></td>
 			</tr>
 			<tr>

@@ -3,7 +3,7 @@
 <body>
 
     <h1 align="Center">
-        <img src="customLogo.jpeg" width="318" height="127" border="0">
+        <img src="<%=ORSView.APP_CONTEXT%>/image/customLogo.jpeg" width="318" height="90">
     </h1>
 
     <h1 align="Center">

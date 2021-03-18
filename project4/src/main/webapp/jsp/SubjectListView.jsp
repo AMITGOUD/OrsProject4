@@ -1,3 +1,4 @@
+<%@page import="in.co.sunrays.controller.CourceCtl"%>
 <%@page import="in.co.sunrays.controller.SubjectListCtl"%>
 <%@page import="in.co.sunrays.controller.BaseCtl"%>
 <%@page import="in.co.sunrays.util.ServletUtility"%>
@@ -5,6 +6,7 @@
 <%@page import="java.util.List"%>
 <%@page import="java.util.Iterator"%>
 <%@page import="in.co.sunrays.model.SubjectModel"%>
+<%@page errorPage="ErrorView.jsp"%>
 <html>
 <head>
 <script src="<%=ORSView.APP_CONTEXT%>/js/select.js"></script>
@@ -16,13 +18,13 @@
 		SubjectModel model = new SubjectModel();
 	%>
 	<%@include file="Header.jsp"%>
-	<center>
-		<h1>Subject list</h1>
+
+		<h1 align="center">Subject list</h1>
 
 		<form action="<%=ORSView.SUBJECT_LIST_CTL%>" method="POST"
 			name="list01">
 
-					<font color="red"><%=ServletUtility.getErrorMessage(request)%></font>
+					
 				
 			<table width="100%">
 				<tr>
@@ -33,23 +35,27 @@
 						name="subjectCode"
 						value="<%=ServletUtility.getParameter("rollNo", request)%>">&emsp;
 						<input type="submit" name="operation"
-						value="<%=SubjectListCtl.OP_SEARCH%>"></td>
+						value="<%=SubjectListCtl.OP_SEARCH%>">
+						&nbsp&nbsp<input type="reset" value="reset"></td>
 				</tr>
 			</table>
-			<br>
+			<input type=button value="Back" onCLick="history.back()">
+			<h4 align="center"><font color="red"><%=ServletUtility.getErrorMessage(request)%></font></h4>
+			
 			<table border="1" width="100%" name="table">
-				<tr>
-					<th>S.No.</th>
+				<tr style="background-color:gray;color: menu;">
+					
 					<th><input type="checkbox" name="Check_ctr" value="yes"
-						onClick="checkAll(document.list01.ids, this)"><b>select
+						onClick="checkAll(document.list01.ids, this)"><b>Select
 							All</b>
-					<dd></th>
+					<dd></th><th>S.No.</th>
 
 					<th>CourceName</th>
-					<th>Subject name</th>
 					<th>Subject code</th>
+					<th>Subject name</th>
 
-					<th>description</th>
+					<th>Description</th>
+					<th>Edit</th>
 
 				</tr>
 				
@@ -65,14 +71,14 @@
 
 						bean = it.next();
 				%>
-				<tr>
+				<tr style="text-align: center;">
 
 
 
-					<td><%=index++%></td>
+				
 					<td><input type="checkbox" name="ids"
 						value="<%=bean.getId()%>"></td>
-
+	               <td><%=index++%></td>
 					<td><%=bean.getCourceName()%></td>
 					<td><%=bean.getSubjectCode()%></td>
 					<td><%=bean.getSubjectName()%></td>
@@ -100,8 +106,10 @@
 						value="<%=SubjectListCtl.OP_PREVIOUS%>"> <%
  	}
  %></td>
-					<td><input type="submit" name="operation"
-						value="<%=SubjectListCtl.OP_DELETE%>"></td>
+					<td align="center"><input type="submit" name="operation"
+						value="<%=SubjectListCtl.OP_DELETE%>">&emsp;&emsp;&emsp;&emsp;&emsp;
+&emsp;&emsp;&emsp;&emsp;&emsp;
+<input type="submit" name="operation"value="<%=SubjectListCtl.OP_NEW%>"></td>
 					<%
 						if (list.size() < pageSize || model.nextPK() - 1 == bean.getId()) {
 					%>
@@ -119,7 +127,7 @@
 			<input type="hidden" name="pageNo" value="<%=pageNo%>"> <input
 				type="hidden" name="pageSize" value="<%=pageSize%>">
 		</form>
-	</center>
+	
 	<%@include file="Footer.jsp"%>
 </body>
 </html>

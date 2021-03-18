@@ -28,7 +28,9 @@ import org.apache.log4j.Logger;
  * @version 1.0
  * @Copyright (c) SunilOS
  */
-@WebServlet(name = "CollegeListCtl", urlPatterns = { "/ctl/CollegeListCtl" })
+/*
+ * @WebServlet(name = "CollegeListCtl", urlPatterns = { "/ctl/CollegeListCtl" })
+ */
 public class CollegeListCtl extends BaseCtl {
 
 	private static Logger log = Logger.getLogger(CollegeListCtl.class);
@@ -110,7 +112,7 @@ public class CollegeListCtl extends BaseCtl {
                 }
 
             } else if (OP_NEW.equalsIgnoreCase(op)) {
-                ServletUtility.redirect(ORSView.USER_CTL, request, response);
+                ServletUtility.redirect(ORSView.COLLEGE_CTL, request, response);
                 return;
             } else if (OP_DELETE.equalsIgnoreCase(op)) {
                 pageNo = 1;

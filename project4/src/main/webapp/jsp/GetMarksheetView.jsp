@@ -1,6 +1,7 @@
 <%@page import="in.co.sunrays.controller.GetMarksheetCtl"%>
 <%@page import="in.co.sunrays.util.DataUtility"%>
 <%@page import="in.co.sunrays.util.ServletUtility"%>
+<%@page errorPage="ErrorView.jsp"%>
 <html>
 <body>
     <%@ include file="Header.jsp"%>

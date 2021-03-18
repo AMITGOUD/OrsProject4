@@ -321,10 +321,12 @@ public class TimeTableModel {
 				sql.append(" AND SUBJECTNAME like '" + bean.getSubjectName() + "%'");
 			}
 			
-			if (bean.getCourceName() != null) {
+			if (bean.getCourceName() != null&& bean.getCourceName().length()>0) {
 				sql.append(" AND Courcename like '" + bean.getCourceName() + "%'");
 			}
-
+			if (bean.getExamDate() != null && bean.getExamDate().length() > 0) {
+				sql.append(" AND EXAMDATE like '" + bean.getExamDate() + "%'");
+			}
 		}
 
 		// if page size is greater than zero then apply pagination

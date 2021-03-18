@@ -30,7 +30,7 @@ import org.apache.log4j.Logger;
  * @version 1.0
  * @Copyright (c) SunilOS
  */
-@ WebServlet(name="UserCtl",urlPatterns={"/ctl/UserCtl"})
+/* @ WebServlet(name="UserCtl",urlPatterns={"/ctl/UserCtl"}) */
 public class UserCtl extends BaseCtl {
 
     private static final long serialVersionUID = 1L;

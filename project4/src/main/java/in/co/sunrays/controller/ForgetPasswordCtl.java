@@ -28,7 +28,7 @@ import org.apache.log4j.Logger;
  * @version 1.0
  * @Copyright (c) SunilOS
  */
-@ WebServlet(name="ForgetPasswordCtl",urlPatterns={"/ForgetPasswordCtl"})
+/* @ WebServlet(name="ForgetPasswordCtl",urlPatterns={"/ForgetPasswordCtl"}) */
 public class ForgetPasswordCtl extends BaseCtl {
 
     private static Logger log = Logger.getLogger(ForgetPasswordCtl.class);

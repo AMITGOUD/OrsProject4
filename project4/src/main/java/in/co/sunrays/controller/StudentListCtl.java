@@ -2,6 +2,7 @@ package in.co.sunrays.controller;
 
 import in.co.sunrays.bean.BaseBean;
 import in.co.sunrays.bean.StudentBean;
+import in.co.sunrays.bean.TimeTableBean;
 import in.co.sunrays.exception.ApplicationException;
 import in.co.sunrays.model.StudentModel;
 import in.co.sunrays.util.DataUtility;
@@ -26,7 +27,7 @@ import org.apache.log4j.Logger;
  * @version 1.0
  * @Copyright (c) SunilOS
  */
-@ WebServlet(name="StudentListCtl",urlPatterns={"/ctl/StudentListCtl"})
+/* @ WebServlet(name="StudentListCtl",urlPatterns={"/ctl/StudentListCtl"}) */
 public class StudentListCtl extends BaseCtl {
 
     private static Logger log = Logger.getLogger(StudentListCtl.class);
@@ -97,6 +98,8 @@ public class StudentListCtl extends BaseCtl {
 
         StudentBean bean = (StudentBean) populateBean(request);
         String op = DataUtility.getString(request.getParameter("operation"));
+        // get the selected checkbox ids array for delete list
+        String[] ids = request.getParameterValues("ids");
         StudentModel model = new StudentModel();
 
         try {
@@ -113,6 +116,22 @@ public class StudentListCtl extends BaseCtl {
                 }
 
             }
+            else if (OP_NEW.equalsIgnoreCase(op)) {
+                ServletUtility.redirect(ORSView.STUDENT_CTL, request,
+                        response);
+                return;
+            } else if (OP_DELETE.equalsIgnoreCase(op)) {
+                pageNo = 1;
+                if (ids != null && ids.length > 0) {
+                    StudentBean deletebean = new  StudentBean();
+                    for (String id : ids) {
+                        deletebean.setId(DataUtility.getInt(id));
+                        model.delete(deletebean);
+                    }
+                } else {
+                    ServletUtility.setErrorMessage(
+                            "Select at least one record", request);
+                }}
             list = model.search(bean, pageNo, pageSize);
             ServletUtility.setList(list, request);
             if (list == null || list.size() == 0) {

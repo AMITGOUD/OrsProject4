@@ -26,7 +26,10 @@ import org.apache.log4j.Logger;
  * @version 1.0
  * @Copyright (c) SunilOS
  */
-@ WebServlet(name="MarksheetMeritListCtl",urlPatterns={"/ctl/MarksheetMeritListCtl"})
+/*
+ * @ WebServlet(name="MarksheetMeritListCtl",urlPatterns={
+ * "/ctl/MarksheetMeritListCtl"})
+ */
 public class MarksheetMeritListCtl extends BaseCtl {
 
     private static Logger log = Logger.getLogger(MarksheetMeritListCtl.class);

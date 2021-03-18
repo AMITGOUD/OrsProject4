@@ -3,6 +3,7 @@
 <%@ page import="in.co.sunrays.controller.*"%>
 <%@ page import="in.co.sunrays.util.*"%>
 <%@ page import="java.util.List"%>
+<%@page errorPage="ErrorView.jsp"%>
 <jsp:useBean id="bean" class="in.co.sunrays.bean.SubjectBean"
 	scope="request"></jsp:useBean>
 <!DOCTYPE html>

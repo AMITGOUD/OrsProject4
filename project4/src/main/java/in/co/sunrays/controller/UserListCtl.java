@@ -26,7 +26,7 @@ import org.apache.log4j.Logger;
  * @version 1.0
  * @Copyright (c) SunilOS
  */
-@ WebServlet(name="UserListCtl",urlPatterns={"/ctl/UserListCtl"})
+/* @ WebServlet(name="UserListCtl",urlPatterns={"/ctl/UserListCtl"}) */
 public class UserListCtl extends BaseCtl {
     private static Logger log = Logger.getLogger(UserListCtl.class);
 

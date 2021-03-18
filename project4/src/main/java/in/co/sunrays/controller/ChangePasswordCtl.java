@@ -29,10 +29,12 @@ import org.apache.log4j.Logger;
  * @version 1.0
  * @Copyright (c) SunilOS
  */
-@ WebServlet(name="ChangePasswordCtl",urlPatterns={"/ctl/ChangePasswordCtl"})
+/*
+ * @ WebServlet(name="ChangePasswordCtl",urlPatterns={"/ctl/ChangePasswordCtl"})
+ */
 public class ChangePasswordCtl extends BaseCtl {
 
-    public static final String OP_CHANGE_MY_PROFILE = "Change My Profile";
+	public static final String OP_CHANGE_MY_PROFILE = "Change My Profile";
 
     private static Logger log = Logger.getLogger(ChangePasswordCtl.class);
 

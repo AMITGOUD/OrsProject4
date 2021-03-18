@@ -29,7 +29,9 @@ import org.apache.log4j.Logger;
  * @version 1.0
  * @Copyright (c) SunilOS
  */
-@ WebServlet(name="UserRegistrationCtl",urlPatterns={"/UserRegistrationCtl"})
+/*
+ * @ WebServlet(name="UserRegistrationCtl",urlPatterns={"/UserRegistrationCtl"})
+ */
 public class UserRegistrationCtl extends BaseCtl {
 
     public static final String OP_SIGN_UP = "SignUp";
@@ -115,7 +117,7 @@ public class UserRegistrationCtl extends BaseCtl {
         log.debug("UserRegistrationCtl Method populatebean Started");
 
         UserBean bean = new UserBean();
-
+                                    
         bean.setId(DataUtility.getLong(request.getParameter("id")));
 
         bean.setRoleId(RoleBean.STUDENT);

@@ -4,6 +4,7 @@
 <%@page import="java.util.List"%>
 <%@page import="java.util.Iterator"%>
 <%@page import="in.co.sunrays.model.StudentModel"%>
+<%@page errorPage="ErrorView.jsp"%>
 <html>
 <head>
 <script src="<%=ORSView.APP_CONTEXT%>/js/select.js"></script>
@@ -14,8 +15,8 @@
 StudentModel model=new StudentModel();
 %>
     <%@include file="Header.jsp"%>
-    <center>
-        <h1>Student List</h1>
+    
+        <h1 align="center">Student List</h1>
 
         <form action="<%=ORSView.STUDENT_LIST_CTL%>" method="post" name="list01">
             <table width="100%">
@@ -23,18 +24,19 @@ StudentModel model=new StudentModel();
                     <td align="center"><label> FirstName :</label> <input
                         type="text" name="firstName"
                         value="<%=ServletUtility.getParameter("firstName", request)%>">
-                        <label>LastName :</label> <input type="text" name="lastName"
-                        value="<%=ServletUtility.getParameter("lastName", request)%>"><label>Email_Id
+                        &nbsp<label>LastName :</label> <input type="text" name="lastName"
+                        value="<%=ServletUtility.getParameter("lastName", request)%>">&nbsp<label>Email_Id
                             :</label> <input type="text" name="email"
                         value="<%=ServletUtility.getParameter("email", request)%>">
-                        <input type="submit" name="operation" value="<%=StudentListCtl.OP_SEARCH %>"></td>
+                        <input type="submit" name="operation" value="<%=StudentListCtl.OP_SEARCH %>">&nbsp&nbsp<input type="reset" value="reset"></td>
                 </tr>
             </table>
-            <br>
+            <input type=button value="Back" onCLick="history.back()"><h4 align="center"><font color="red"><%=ServletUtility.getErrorMessage(request)%></font></h4>
             <table border="1" width="100%" name="table">
-                <tr>
-                    <th>S.No.</th>
+                <tr style="background-color:gray;color: menu;">
+                    
                     <th><input type="checkbox" name="Check_ctr" value="yes" onClick="checkAll(document.list01.ids, this)"><b>select All</b><dd></th>
+                    <th>S.No.</th>
                     <th>First Name.</th>
                     <th>Last Name.</th>
                     <th>Date Of Birth.</th>
@@ -42,9 +44,9 @@ StudentModel model=new StudentModel();
                     <th>Email ID.</th>
                     <th>Edit</th>
                 </tr>
-                <tr>
-                    <td colspan="8"><font color="red"><%=ServletUtility.getErrorMessage(request)%></font></td>
-                </tr>
+                
+                    
+                
                 <%
                     int pageNo = ServletUtility.getPageNo(request);
                     int pageSize = ServletUtility.getPageSize(request);
@@ -57,10 +59,10 @@ StudentModel model=new StudentModel();
 
                          bean = it.next();
                 %>
-                <tr>
-                    <td><%=index++%></td>
-                     <td><input type="checkbox" name="ids"
+                <tr style="text-align: center;"><td><input type="checkbox" name="ids"
 						value="<%=bean.getId()%>"></td>
+                    <td><%=index++%></td>
+                     
                     <td><%=bean.getFirstName()%></td>
                     <td><%=bean.getLastName()%></td>
                     <td><%=bean.getDob()%></td>
@@ -89,7 +91,13 @@ StudentModel model=new StudentModel();
 							}
 						%>
 					</td>
-					<td><input type="submit" name="operation" value="<%=StudentListCtl.OP_DELETE%>"></td>
+					<td align="center"><input type="submit" name="operation" value="<%=StudentListCtl.OP_DELETE%>">
+					
+					&emsp;&emsp;&emsp;&emsp;&emsp;
+&emsp;&emsp;&emsp;&emsp;&emsp;
+<input type="submit" name="operation"value="<%=StudentListCtl.OP_NEW%>">
+					
+					</td>
 					<%
 						if (list.size() < pageSize || model.nextPK() - 1 == bean.getId()) {
 					%>
@@ -110,6 +118,6 @@ StudentModel model=new StudentModel();
 
         </form>
         <%@include file="Footer.jsp"%>
-    </center>
+    
 </body>
 </html>

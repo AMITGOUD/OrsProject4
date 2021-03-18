@@ -28,7 +28,7 @@ import org.apache.log4j.Logger;
  * @version 1.0
  * @Copyright (c) SunilOS
  */
-@ WebServlet(name="RoleCtl",urlPatterns={"/ctl/RoleCtl"})
+/* @ WebServlet(name="RoleCtl",urlPatterns={"/ctl/RoleCtl"}) */
 public class RoleCtl extends BaseCtl {
 
     private static final long serialVersionUID = 1L;

@@ -28,7 +28,7 @@ import in.co.sunrays.util.ServletUtility;
 /**
  * Servlet implementation class SubjectCtl
  */
-@ WebServlet(name="SubjectCtl",urlPatterns={"/ctl/SubjectCtl"})
+/* @ WebServlet(name="SubjectCtl",urlPatterns={"/ctl/SubjectCtl"}) */
 public class SubjectCtl extends BaseCtl {
 	private static final long serialVersionUID = 1L;
 	private static Logger log = Logger.getLogger(SubjectCtl.class);

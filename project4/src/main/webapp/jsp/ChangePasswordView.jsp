@@ -1,6 +1,7 @@
 <%@page import="in.co.sunrays.controller.ChangePasswordCtl"%>
 <%@page import="in.co.sunrays.util.DataUtility"%>
 <%@page import="in.co.sunrays.util.ServletUtility"%>
+<%@page errorPage="ErrorView.jsp"%>
 <html>
 <body><%@ include file="Header.jsp"%>
     <form action="<%=ORSView.CHANGE_PASSWORD_CTL%>" method="post">
@@ -61,7 +62,7 @@
 
                 <tr>
                     <th></th>
-                    <td colspan="" style="margin-left: 15"><input type="submit" name="operation" size="8"
+                    <td colspan="" style="margin-left: 15"><input type="submit" name="operation" style="width: 110"
                         value="<%=ChangePasswordCtl.OP_CHANGE_MY_PROFILE %>">  <input type="submit"
                         name="operation" value="<%= ChangePasswordCtl.OP_SAVE%>"> </td>
                 </tr>

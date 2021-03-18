@@ -3,6 +3,7 @@
 <%@page import="in.co.sunrays.util.HTMLUtility"%>
 <%@page import="in.co.sunrays.util.DataUtility"%>
 <%@page import="in.co.sunrays.util.ServletUtility"%>
+<%@page errorPage="ErrorView.jsp"%>
 <html>
 <head>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -14,7 +15,7 @@
 		$("#dob1").datepicker({
 			changeMonth : true,
 			changeYear : true,
-			yearRange:'1980:2001',
+			yearRange:'1980:2008',
 			dateFormat: 'mm/dd/yy'
 		});
 	});
@@ -47,49 +48,49 @@
             <input type="hidden" name="modifiedDatetime" value="<%=DataUtility.getTimestamp(bean.getModifiedDatetime())%>">
             
 
-            <table style="table-layout: fixed">
+            <table style="table-layout: fixed; margin-left: 118" >
 
                 <tr>
-                    <td>First Name*</td>
+                    <td>First Name<font color="red">*</font></td>
                     <td><input type="text" name="firstName"
                         value="<%=DataUtility.getStringData(bean.getFirstName())%>"></td><td width="36%"><font
                         color="red"> <%=ServletUtility.getErrorMessage("firstName", request)%></font></td>
                 </tr>
                 <tr>
-                    <td>Last Name*</td>
-                    <td><input type="text" name="lastName"
+                    <td>Last Name<font color="red">*</font></td>
+                    <td><input type="text" name="lastName" 
                         value="<%=DataUtility.getStringData(bean.getLastName())%>"></td><td width=""><font
                         color="red"> <%=ServletUtility.getErrorMessage("lastName", request)%></font></td>
                 </tr>
                 <tr>
-                    <td>mobile*</td>
+                    <td>Mobile<font color="red">*</font></td>
                     <td><input type="text" name="mobile"
-                        placeholder="Must be no"
+                        
                         value="<%=DataUtility.getStringData(bean.getMobileNo())%>"></td><td><font
                         color="red"> <%=ServletUtility.getErrorMessage("mobile", request)%></font></td>
                 </tr>
                 <tr>
-                    <td>LoginId*</td>
+                    <td>LoginId<font color="red">*</font></td>
                     <td><input type="text" name="login"
-                        placeholder="Must be Email ID"
+                       
                         value="<%=DataUtility.getStringData(bean.getLogin())%>"></td><td><font
                         color="red"> <%=ServletUtility.getErrorMessage("login", request)%></font></td>
                 </tr>
                 <tr>
-                    <td>Password*</td>
+                    <td>Password<font color="red">*</font></td>
                     <td><input type="password" name="password"
                         value="<%=DataUtility.getStringData(bean.getPassword())%>"></td><td><font
                         color="red"> <%=ServletUtility.getErrorMessage("password", request)%></font></td>
                 </tr>
                 <tr>
-                    <td>Confirm Password*</td>
+                    <td>Confirm Password<font color="red">*</font></td>
                     <td><input type="password" name="confirmPassword"
                         value="<%=DataUtility.getStringData(bean.getConfirmPassword())%>"></td><td><font
                         color="red"> <%=ServletUtility
                     .getErrorMessage("confirmPassword", request)%></font></td>
                 </tr>
                 <tr>
-                    <td>Gender</td>
+                    <td>Gender<font color="red">*</font></td>
                     <td>
                         <%
                             HashMap map = new HashMap();
@@ -104,7 +105,7 @@
                 </tr>
 
                 <tr>
-                    <td>Date Of Birth (mm/dd/yyyy)</td>
+                    <td>Date Of Birth<font color="red">*</font></td>
                    <td><input type="text" name="dob" id="dob1" readonly="readonly"
                         value="<%=DataUtility.getDateString(bean.getDob())%>"> 
                     </td><td><font color="red"> <%=ServletUtility.getErrorMessage("dob", request)%></font></td>

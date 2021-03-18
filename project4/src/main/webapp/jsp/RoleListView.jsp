@@ -5,6 +5,7 @@
 <%@page import="java.util.List"%>
 <%@page import="java.util.Iterator"%>
 <%@page import="in.co.sunrays.model.RoleModel"%>
+<%@page errorPage="ErrorView.jsp"%>
 
 <html>
 <head>
@@ -17,8 +18,8 @@ RoleModel model=new RoleModel();
 %>
     <%@include file="Header.jsp"%>
 
-    <center>
-        <h1>Role List</h1>
+    
+        <h1 align="center">Role List</h1>
 
         <form action="<%=ORSView.ROLE_LIST_CTL%>" method="post" name="list01">
             <table width="100%">
@@ -26,22 +27,22 @@ RoleModel model=new RoleModel();
                     <td align="center"><label>Name :</label> <input type="text"
                         name="name"
                         value="<%=ServletUtility.getParameter("name", request)%>">
-                        &nbsp; <input type="submit" name="operation" value="<%=RoleListCtl.OP_SEARCH %>">
+                        &nbsp; <input type="submit" name="operation" value="<%=RoleListCtl.OP_SEARCH %>">&nbsp&nbsp<input type="reset" value="reset">
                     </td>
                 </tr>
             </table>
+            <input type=button value="Back" onCLick="history.back()">
+<h4 align="center"><font color="red"><%=ServletUtility.getErrorMessage(request)%></font></h4>
             <table border="1" width="100%" name="table">
-                <tr>
-                    <th>S.No.</th>
+                <tr style="background-color:gray;color: menu;">
+                    
                    <th><input type="checkbox" name="Check_ctr" value="yes" onClick="checkAll(document.list01.ids, this)"><b>select All</b><dd></th>
+                    <th>S.No.</th>
                     <th>Name</th>
-                    <th>Descriptiop</th>
+                    <th>Description</th>
                     <th>Edit</th>
                 </tr>
-                <tr>
-                    <td colspan="8"><font color="red"><%=ServletUtility.getErrorMessage(request)%></font></td>
-                </tr>
-
+               
                 <%
                     int pageNo = ServletUtility.getPageNo(request);
                     int pageSize = ServletUtility.getPageSize(request);
@@ -52,10 +53,11 @@ RoleModel model=new RoleModel();
                     while (it.hasNext()) {
                          bean = it.next();
                 %>
-                <tr>
-                    <td><%=index++%></td>
-                    <td><input type="checkbox" name="ids"
+                <tr style="text-align: center;">
+                  
+                    <td ><input type="checkbox" name="ids"
 						value="<%=bean.getId()%>"></td>
+						  <td><%=index++%></td>
                     <td><%=bean.getName()%></td>
                     <td><%=bean.getDescription()%></td>
                     <td><a href="RoleCtl?id=<%=bean.getId()%>">Edit</a></td>
@@ -99,7 +101,7 @@ RoleModel model=new RoleModel();
             <input type="hidden" name="pageNo" value="<%=pageNo%>"> <input
                 type="hidden" name="pageSize" value="<%=pageSize%>">
         </form>
-    </center>
+   
     <%@include file="Footer.jsp"%>
 </body>
 </html>

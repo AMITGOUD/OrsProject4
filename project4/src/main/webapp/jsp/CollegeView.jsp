@@ -1,6 +1,7 @@
 <%@page import="in.co.sunrays.controller.CollegeCtl"%>
 <%@page import="in.co.sunrays.util.DataUtility"%>
 <%@page import="in.co.sunrays.util.ServletUtility"%>
+<%@page errorPage="ErrorView.jsp"%>
 <html>
 <body><%@ include file="Header.jsp"%>
     <form action="CollegeCtl" method="POST">
@@ -33,31 +34,31 @@
 
             <table style="margin-left: 27.5em">
                 <tr>
-                    <td width="13%">Name*</td>
+                    <td width="13%">Name<font color="red">*</font></td>
                     <td width="15"><input type="text" name="name"
                         value="<%=DataUtility.getStringData(bean.getName())%>"></td><td width="60%"><font
                         color="red"> <%=ServletUtility.getErrorMessage("name", request)%></font></td>
                 </tr>
                 <tr>
-                    <td>Address*</td>
+                    <td>Address<font color="red">*</font></td>
                     <td><input type="text" name="address"
                         value="<%=DataUtility.getStringData(bean.getAddress())%>"></td><td><font
                         color="red"> <%=ServletUtility.getErrorMessage("address", request)%></font></td>
                 </tr>
                 <tr>
-                    <td>State*</td>
+                    <td>State<font color="red">*</font></td>
                     <td><input type="text" name="state"
                         value="<%=DataUtility.getStringData(bean.getState())%>"></td><td><font
                         color="red"> <%=ServletUtility.getErrorMessage("state", request)%></font></td>
                 </tr>
                 <tr>
-                    <td>City*</td>
+                    <td>City<font color="red">*</font></td>
                     <td><input type="text" name="city"
                         value="<%=DataUtility.getStringData(bean.getCity())%>"></td><td><font
                         color="red"> <%=ServletUtility.getErrorMessage("city", request)%></font></td>
                 </tr>
                 <tr>
-                    <td>PhoneNo*</td>
+                    <td>PhoneNo<font color="red">*</font></td>
                     <td><input type="text" name="phoneNo"
                         value="<%=DataUtility.getStringData(bean.getPhoneNo())%>"></td><td><font
                         color="red"> <%=ServletUtility.getErrorMessage("phoneNo", request)%></font></td>

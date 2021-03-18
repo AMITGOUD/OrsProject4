@@ -35,7 +35,7 @@
 
 		<td rowspan="2">
 			<h1 align="Right">
-								<%-- <img src="<%=ORSView.APP_CONTEXT%>/image/customLogo.jpeg" width="318" height="90"> --%>
+								 <img src="<%=ORSView.APP_CONTEXT%>/image/customLogo.jpeg" width="318" height="40"> 
 			</h1>
 		</td>
 
@@ -66,11 +66,13 @@
 			<%}
 			if (userBean.getRoleId() == RoleBean.ADMIN) {
 		%> 
-		| <a href="<%=ORSView.MY_PROFILE_CTL%>">MyProfile</b></a> | <a
+		 <a href="<%=ORSView.MY_PROFILE_CTL%>">MyProfile</b></a> | <a
 			href="<%=ORSView.CHANGE_PASSWORD_CTL%>">Change Password</b></a> | <a
 			href="<%=ORSView.JAVA_DOC_VIEW%>" target="blank">Java Doc</b></a>| 
 		<a href="<%=ORSView.MARKSHEET_CTL%>">Add Marksheet</b></a> | <a
-			href="<%=ORSView.MARKSHEET_LIST_CTL%>">Marksheet List</b></a> | <a
+			href="<%=ORSView.MARKSHEET_LIST_CTL%>">Marksheet List</b></a> |
+			<a href="<%=ORSView.MARKSHEET_MERIT_LIST_CTL%>">Marksheet Merit
+				List</b>| <a
 			href="<%=ORSView.USER_CTL%>">Add User</b></a> | <a
 			href="<%=ORSView.USER_LIST_CTL%>">User List</b></a> | <a
 			href="<%=ORSView.COLLEGE_CTL%>">Add College</b></a> | <a
@@ -82,8 +84,11 @@
 			href="<%=ORSView.TIMETABLE_CTL%>">Add timetable</b></a>| <a
 			href="<%=ORSView.TIMETABLE_LIST_CTL%>"> Timetable List</b></a>| <a
 			href="<%=ORSView.FACULTY_CTL%>">Add Faculty</b></a>| <a
-			href="<%=ORSView.FACULTY_LIST_CTL%>">Faculty List</b></a>| <a
-			href="<%=ORSView.SUBJECT_CTL%>">Add Subject</b></a> | | <a
+			href="<%=ORSView.FACULTY_LIST_CTL%>">Faculty List</b></a>|
+			<a href="<%=ORSView.COURCE_CTL%>">Add Cource</a>|
+			<a href="<%=ORSView.COURCE_LIST_CTL%>">CourceList</a>|
+			 <a
+			href="<%=ORSView.SUBJECT_CTL%>">Add Subject</b></a> |  <a
 			href="<%=ORSView.SUBJECT_LIST_CTL%>"> SubjectList</b></a> <%
  	}
  %></td>

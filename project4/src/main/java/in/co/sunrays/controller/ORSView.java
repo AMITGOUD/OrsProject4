@@ -17,8 +17,8 @@ public interface ORSView {
     public String PAGE_FOLDER = "/jsp";
 
     public String JAVA_DOC_VIEW = APP_CONTEXT + "/doc/index.html";
-
-    public String ERROR_VIEW = PAGE_FOLDER + "/MarksheetListView.jsp";
+    public String ERROR_CTL=APP_CONTEXT+"/ErrorCtl";
+    public String ERROR_VIEW = PAGE_FOLDER + "/ErrorView.jsp";
     public String FACULTY_VIEW = PAGE_FOLDER + "/FacultyView.jsp";
     public String MARKSHEET_VIEW = PAGE_FOLDER + "/MarksheetView.jsp";
     public String TIMETABLE_VIEW = PAGE_FOLDER + "/TimeTableView.jsp";
@@ -32,9 +32,11 @@ public interface ORSView {
     public String STUDENT_LIST_VIEW = PAGE_FOLDER + "/StudentListView.jsp";
     public String ROLE_VIEW = PAGE_FOLDER + "/RoleView.jsp";
     public String ROLE_LIST_VIEW = PAGE_FOLDER + "/RoleListView.jsp";
+    public String COURCE_LIST_VIEW = PAGE_FOLDER + "/CourceListView.jsp";
     public String USER_REGISTRATION_VIEW = PAGE_FOLDER
             + "/UserRegistrationView.jsp";
     public String LOGIN_VIEW = PAGE_FOLDER + "/LoginView.jsp";
+    public String COURCE_VIEW = PAGE_FOLDER + "/CourceView.jsp";
     public String WELCOME_VIEW = PAGE_FOLDER + "/Welcome.jsp";
     public String CHANGE_PASSWORD_VIEW = PAGE_FOLDER
             + "/ChangePasswordView.jsp";
@@ -65,6 +67,7 @@ public interface ORSView {
     public String LOGIN_CTL = APP_CONTEXT + "/LoginCtl";
     public String LOGIN_CTL1 ="/LoginCtl";
     public String FACULTY_CTL = APP_CONTEXT + "/ctl/FacultyCtl";
+    public String COURCE_CTL = APP_CONTEXT + "/ctl/CourceCtl";
     public String WELCOME_CTL = APP_CONTEXT + "/WelcomeCtl";
     public String LOGOUT_CTL = APP_CONTEXT + "/LoginCtl";
     public String GET_MARKSHEET_CTL = APP_CONTEXT + "/ctl/GetMarksheetCtl";
@@ -74,6 +77,7 @@ public interface ORSView {
     public String MARKSHEET_MERIT_LIST_CTL = APP_CONTEXT
             + "/ctl/MarksheetMeritListCtl";
     public String SUBJECT_LIST_CTL = APP_CONTEXT + "/ctl/SubjectListCtl";
+    public String COURCE_LIST_CTL = APP_CONTEXT + "/ctl/CourceListCtl";
     public String TIMETABLE_LIST_CTL = APP_CONTEXT + "/ctl/TimeTableListCtl";
     public String FACULTY_LIST_CTL = APP_CONTEXT + "/ctl/FacultyListCtl";
 }

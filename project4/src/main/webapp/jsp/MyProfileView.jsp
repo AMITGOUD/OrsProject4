@@ -3,6 +3,7 @@
 <%@page import="java.util.HashMap"%>
 <%@page import="in.co.sunrays.util.DataUtility"%>
 <%@page import="in.co.sunrays.util.ServletUtility"%>
+<%@page errorPage="ErrorView.jsp"%>
 <html>
 <head>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -58,20 +59,20 @@ table.fixed td:nth-of-type(3) {width:30%;}/*Setting the width of column 3
 
             <table class="fixed" align="center">
                 <tr>
-                    <td  >LoginId*</td>
+                    <td  >LoginId<font color="red">*</font></td>
                     <td width=""><input type="text" name="login" 
                         value="<%=DataUtility.getStringData(bean.getLogin())%>"readonly="readonly"></td><td width="30%"><font
                         color="red"> <%=ServletUtility.getErrorMessage("login", request)%></font></td>
                 </tr>
 
                 <tr>
-                    <td>First Name*</td>
+                    <td>First Name<font color="red">*</font></td>
                     <td><input type="text" name="firstName"
                         value="<%=DataUtility.getStringData(bean.getFirstName())%>"><font
                         color="red"> <%=ServletUtility.getErrorMessage("firstName", request)%></font></td>
                 </tr>
                 <tr>
-                    <td>Last Name*</td>
+                    <td>Last Name<font color="red">*</font></td>
                     <td><input type="text" name="lastName"
                         value="<%=DataUtility.getStringData(bean.getLastName())%>"><font
                         color="red"> <%=ServletUtility.getErrorMessage("lastName", request)%></font></td>
@@ -90,14 +91,14 @@ table.fixed td:nth-of-type(3) {width:30%;}/*Setting the width of column 3
                     </td>
                 </tr>
                 <tr>
-                    <td>Mobile No*</td>
+                    <td>Mobile No<font color="red">*</font></td>
                     <td><input type="text" name="mobileNo"
                         value="<%=DataUtility.getStringData(bean.getMobileNo())%>"><font
                         color="red"> <%=ServletUtility.getErrorMessage("mobileNo", request)%></font></td>
                 </tr>
 
                 <tr>
-                    <td>Date Of Birth </td>
+                    <td>Date Of Birth<font color="red">*</font> </td>
                     <td><input type="text" name="dob" readonly="readonly" id="dob1"
                         value="<%=DataUtility.getDateString(bean.getDob())%>">
                    
@@ -109,9 +110,9 @@ table.fixed td:nth-of-type(3) {width:30%;}/*Setting the width of column 3
                 
                 <tr>
                     <th></th>
-                    <td colspan="2"><input type="submit" name="operation"
-                        value="<%=MyProfileCtl.OP_CHANGE_MY_PASSWORD %>"> &nbsp; <input type="submit"
-                        name="operation" value="<%=MyProfileCtl.OP_SAVE %>"> &nbsp;</td>
+                    <td colspan="2"><input type="submit" name="operation" style="width:114"
+                        value="<%=MyProfileCtl.OP_CHANGE_MY_PASSWORD %>"> <input type="submit"
+                        name="operation" value="<%=MyProfileCtl.OP_SAVE %>"> </td>
                 </tr>
             </table>
     </form>

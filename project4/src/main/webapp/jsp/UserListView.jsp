@@ -3,6 +3,7 @@
 <%@page import="java.util.List"%>
 <%@page import="java.util.Iterator"%>
 <%@page import="in.co.sunrays.model.*"%>
+<%@page errorPage="ErrorView.jsp"%>
 
 <html>
 <head>
@@ -15,8 +16,8 @@
 	%>
     <%@include file="Header.jsp"%>
 
-    <center>
-        <h1>User List</h1>
+    
+        <h1 align="center">User List</h1>
 
         <form action="<%=ORSView.USER_LIST_CTL%>" method="post" name="list01">
 
@@ -31,11 +32,12 @@
                     </td>
                 </tr>
             </table>
-            <br>
+            <input type=button value="Back" onCLick="history.back()"><h4 align="center"><font color="red"><%=ServletUtility.getErrorMessage(request)%></font></h4>
 
             <table border="1" width="100%" name="table">
-                <tr> <th>S.no.</th>
-                    <th><input type="checkbox" name="Check_ctr" value="yes" onClick="checkAll(document.list01.ids, this)"><b>select All</b><dd></th>
+                <tr style="background-color:gray;color: menu;"> 
+                    <th><input type="checkbox" name="Check_ctr" value="yes" onClick="checkAll(document.list01.ids, this)"><b>Select All</b><dd></th>
+                    <th>S.no.</th>
                     <th>FirstName</th>
                     <th>LastName</th>
                     <th>LoginId</th>
@@ -44,10 +46,7 @@
                     <th>Edit</th>
                 </tr>
 
-                <tr>
-                    <td colspan="8"><font color="red"><%=ServletUtility.getErrorMessage(request)%></font></td>
-                </tr>
-
+                
                 <%
                     int pageNo = ServletUtility.getPageNo(request);
                     int pageSize = ServletUtility.getPageSize(request);
@@ -60,9 +59,10 @@
                     while (it.hasNext()) {
                          bean = it.next();
                 %>
-                <tr>
-                    <td><%=index++%></td>
+                <tr style="text-align: center;">
+                   
                     <td><input type="checkbox" name="ids" value="<%=bean.getId()%>"></td>
+                     <td><%=index++%></td>
                     <td><%=bean.getFirstName()%></td>
                     <td><%=bean.getLastName()%></td>
                     <td><%=bean.getLogin()%></td>
@@ -91,7 +91,13 @@
 							}
 						%>
 					</td>
-					<td><input type="submit" name="operation" value="<%=UserListCtl.OP_DELETE%>"></td>
+					<td align="center"><input type="submit" name="operation" value="<%=UserListCtl.OP_DELETE%>">
+					&emsp;&emsp;&emsp;&emsp;&emsp;
+&emsp;&emsp;&emsp;&emsp;&emsp;
+<input type="submit" name="operation"value="<%=UserListCtl.OP_NEW%>">
+					
+					
+					</td>
 					<%
 						if (list.size() < pageSize || model.nextPK() - 1 == bean.getId()) {
 					%>

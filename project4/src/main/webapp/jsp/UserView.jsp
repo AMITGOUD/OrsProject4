@@ -3,6 +3,7 @@
 <%@page import="in.co.sunrays.util.HTMLUtility"%>
 <%@page import="java.util.HashMap"%>
 <%@page import="in.co.sunrays.util.DataUtility"%>
+<%@page errorPage="ErrorView.jsp"%>
 <%@page import="in.co.sunrays.util.ServletUtility"%>
 <html>
 <head>
@@ -14,7 +15,22 @@ table.fixed td:nth-of-type(2) {width:170px}/*Setting the width of column 2.*/
 table.fixed td:nth-of-type(3) {width:200px;}/*Setting the width of column 3*/
 
 
-</style> 
+</style>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+<meta charset="ISO-8859-1">
+<script>
+$(function() {
+	$("#dob1").datepicker({
+		changeMonth : true,
+		changeYear : true,
+		yearRange:'1980:2021',
+		dateFormat: 'mm/dd/yy'
+	});
+});
+</script> 
 </head>
 <body><%@ include file="Header.jsp"%>
 	<form action="<%=ORSView.USER_CTL%>" method="post">
@@ -31,12 +47,12 @@ table.fixed td:nth-of-type(3) {width:200px;}/*Setting the width of column 3*/
 
 		
 
-			<H2>
+			<H2 align="center">
 				<font color="red"> <%=ServletUtility.getErrorMessage(request)%>
 				</font>
 			</H2>
 
-			<H2>
+			<H2 align="center">
 				<font color="green"> <%=ServletUtility.getSuccessMessage(request)%>
 				</font>
 			</H2>
@@ -99,7 +115,7 @@ table.fixed td:nth-of-type(3) {width:200px;}/*Setting the width of column 3*/
 				<tr><td>Role : </td><td><%=HTMLUtility.getList("roleId", String.valueOf(bean.getRoleId()), l)%></td></tr>
 				<tr>
 					<td>Date Of Birth </td>
-					<td><input type="text" name="dob" placeholder="(mm/dd/yyyy)"
+					<td><input type="text" name="dob" id="dob1" placeholder="(mm/dd/yyyy)"
 						value="<%=DataUtility.getDateString(bean.getDob())%>"> </td><td width=""><font
 						color="red"> <%=ServletUtility.getErrorMessage("dob", request)%></font></td>
 				</tr>

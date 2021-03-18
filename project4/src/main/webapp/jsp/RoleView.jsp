@@ -1,7 +1,8 @@
-<%@page import="in.co.sunrays.controller.RoleCtl"%>
+R<%@page import="in.co.sunrays.controller.RoleCtl"%>
 <%@page import="in.co.sunrays.controller.BaseCtl"%>
 <%@page import="in.co.sunrays.util.DataUtility"%>
 <%@page import="in.co.sunrays.util.ServletUtility"%>
+<%@page errorPage="ErrorView.jsp"%>
 <html>
 <head>
 <style type="text/css">
@@ -46,13 +47,13 @@ table.fixed td:nth-of-type(3) {width:200px;}/*Setting the width of column 3*/
 
             <table class="fixed">
                 <tr>
-                    <td>Name*</td>
+                    <td>Name<font color="red">*</font></td>
                     <td><input type="text" name="name"
                         value="<%=DataUtility.getStringData(bean.getName())%>"></td><td><font
                         color="red"> <%=ServletUtility.getErrorMessage("name", request)%></font></td>
                 </tr>
                 <tr>
-                    <td>Description*</td>
+                    <td>Description<font color="red">*</font></td>
                     <td><input type="text" name="description"
                         value="<%=DataUtility.getStringData(bean.getDescription())%>"></td><td><font
                         color="red"> <%=ServletUtility.getErrorMessage("description", request)%></font></td>

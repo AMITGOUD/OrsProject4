@@ -218,6 +218,7 @@ public class RoleModel {
             }
             rs.close();
         } catch (Exception e) {
+        	
             log.error("Database Exception..", e);
             throw new ApplicationException(
                     "Exception : Exception in getting User by pk");

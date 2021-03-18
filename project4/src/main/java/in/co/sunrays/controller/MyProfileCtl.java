@@ -29,7 +29,7 @@ import org.apache.log4j.Logger;
  * @version 1.0
  * @Copyright (c) SunilOS
  */
-@ WebServlet(name="MyProfileCtl",urlPatterns={"/ctl/MyProfileCtl"})
+/* @ WebServlet(name="MyProfileCtl",urlPatterns={"/ctl/MyProfileCtl"}) */
 public class MyProfileCtl extends BaseCtl {
 
     public static final String OP_CHANGE_MY_PASSWORD = "ChangePassword";

@@ -3,23 +3,26 @@
  "http://java.sun.com/dtd/web-app_2_3.dtd" >
 
 <web-app>
+
+	<display-name>Archetype Created Web Application</display-name>
 	
-<display-name>Archetype Created Web Application</display-name>
-	<servlet>
+<servlet>
 		<servlet-name>BaseCtl</servlet-name>
 		<display-name>BaseCtl</display-name>
 		<description></description>
 		<servlet-class>in.co.sunrays.controller.BaseCtl</servlet-class>
 	</servlet>
-	
-	
-	
 	<servlet>
-		<servlet-name>FrontController</servlet-name>
-		<display-name>FrontController</display-name>
+		<servlet-name>WelcomeCtl</servlet-name>
+		<display-name>WelcomeCtl</display-name>
 		<description></description>
-		<servlet-class>in.co.sunrays.controller.FrontController</servlet-class>
+		<servlet-class>in.co.sunrays.controller.WelcomeCtl</servlet-class>
+		
 	</servlet>
+	
+	
+	
+	
 	<servlet>
 		<servlet-name>LoginCtl</servlet-name>
 		<display-name>LoginCtl</display-name>
@@ -32,12 +35,7 @@
 		<description></description>
 		<servlet-class>in.co.sunrays.controller.UserRegistrationCtl</servlet-class>
 	</servlet>
-	<servlet>
-		<servlet-name>WelcomeCtl</servlet-name>
-		<display-name>WelcomeCtl</display-name>
-		<description></description>
-		<servlet-class>in.co.sunrays.controller.WelcomeCtl</servlet-class>
-	</servlet>
+	
 	<servlet>
 		<servlet-name>ForgetPasswordCtl</servlet-name>
 		<display-name>ForgetPasswordCtl</display-name>
@@ -165,6 +163,24 @@
 		<description></description>
 		<servlet-class>in.co.sunrays.controller.FacultyListCtl</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>CourceCtl</servlet-name>
+		<display-name>CourceCtl</display-name>
+		<description></description>
+		<servlet-class>in.co.sunrays.controller.CourceCtl</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>CourceListCtl</servlet-name>
+		<display-name>CourceListCtl</display-name>
+		<description></description>
+		<servlet-class>in.co.sunrays.controller.CourceListCtl</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>ErrorCtl</servlet-name>
+		<display-name>ErrorCtl</display-name>
+		<description></description>
+		<servlet-class>in.co.sunrays.controller.ErrorCtl</servlet-class>
+	</servlet>
 	<servlet-mapping>
 		<servlet-name>LoginCtl</servlet-name>
 		<url-pattern>/LoginCtl</url-pattern>
@@ -262,5 +278,21 @@
 		<servlet-name>FacultyListCtl</servlet-name>
 		<url-pattern>/ctl/FacultyListCtl</url-pattern>
 	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>CourceCtl</servlet-name>
+		<url-pattern>/ctl/CourceCtl</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>CourceListCtl</servlet-name>
+		<url-pattern>/ctl/CourceListCtl</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ErrorCtl</servlet-name>
+		<url-pattern>/ErrorCtl</url-pattern>
+	</servlet-mapping> 
+	<error-page>
+	<error-code>404</error-code>
+	<location>/jsp/ErrorView.jsp</location>
 	
+	</error-page>
 </web-app>
